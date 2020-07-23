@@ -1,0 +1,100 @@
+<% set_meta_tags title: "VenJob - Admin Applies",
+                 description: "VenJob - Admin Applies",
+                 keywords: "VenJob - Admin Applies" %>
+<div id="primary" class="content-area container" role="main">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <article id="post-14" class="post-14 page type-page status-publish hentry">
+        <div class="entry-content">
+          <%= form_tag(admins_applies_path, :method => "get", :class => "job-manager-form") do %>
+            <fieldset class="fieldset-job_title fieldset-type-text">
+              <label for="user_email">User email</label>
+              <div class="field required-field">
+                <input type="text" class="input-text" name="user_email" id="user_email" placeholder="User email" value="<%= params[:user_email] %>">
+              </div>
+            </fieldset>
+            <div class="row">
+              <div class="col-md-6">
+                <fieldset class="fieldset-job_type fieldset-type-term-select">
+                  <label for="city_ids">City</label>
+                  <div class="field required-field">
+                    <span class="select postform-wrapper">
+                      <select name="city_ids" id="city_ids" class="postform">
+                        <option value="">Select</option>
+                        <% @cities.each do |city| %>
+                          <option class="level-0" value="<%= city.id %>"><%= city.title %></option>
+                        <% end %>
+                      </select>
+                    </span>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-md-6">
+                <fieldset class="fieldset-job_type fieldset-type-term-select">
+                  <label for="industry_ids">Industry</label>
+                  <div class="field required-field">
+                    <span class="select postform-wrapper">
+                      <select name="industry_ids" id="industry_ids" class="postform">
+                        <option selected value="">Select</option>
+                        <% @industries.each do |industry| %>
+                          <option class="level-0" value="<%= industry.id %>"><%= industry.title %></option>
+                        <% end %>
+                      </select>
+                    </span>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <fieldset class="fieldset-job_title fieldset-type-text">
+                  <label for="applied_at_from">Applied at from</label>
+                    <input type="date" class="input-text" name="applied_at_from" id="applied_at_from">
+                </fieldset>
+              </div>
+              <div class="col-md-6">
+                <fieldset class="fieldset-job_title fieldset-type-text">
+                  <label for="applied_at_to">to</label>
+                    <input type="date" class="input-text" name="applied_at_to" id="applied_at_to">
+                </fieldset>
+              </div>
+            </div>
+            <p>
+              <%= submit_tag "Search", name: nil, class: "button" %>
+              <%# link_to "CSV Download", admins_applies_path(format: :csv), class: "button export-csv" %>
+            </p>
+          <% end %>
+          <div class="clearfix"></div>
+          <table class="table" style="word-break: break-all;">
+            <thead>
+              <tr>
+                <th width="50px">ID</th>
+                <th width="200px">Job title</th>
+                <th width="150px">Full name</th>
+                <th width="200px">Email</th>
+                <th width="200px">CV</th>
+                <th>Applied at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @applies.each do |apply| %>
+                <tr>
+                  <th><%= apply["apply_id"] %></th>
+                  <td><%= apply["job_title"] %></td>
+                  <td><%= apply["user_full_name"] %></td>
+                  <td><%= apply["user_email"] %></td>
+                  <td><%= apply["user_cv"].split("/").last %></td>
+                  <td><%= apply["applied_at"] > 0 ? Time.at(apply["applied_at"]).to_date.to_s : "" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="job-manager-pagination">
+            <%= will_paginate @applies %>
+          </div>
+        </div>
+      </article>
+      <!-- #post -->
+    </div>
+  </div>
+</div>

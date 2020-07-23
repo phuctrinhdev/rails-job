@@ -1,0 +1,50 @@
+- set_meta_tags title: "VenJob - Favorite Jobs",
+                description: "VenJob - Favorite Jobs",
+                keywords: "VenJob - Favorite Jobs"
+header.page-header
+  h2.page-title
+    | Favorite jobs
+#primary.content-area.container[role="main"]
+  article#post-2452.post-2452.page.type-page.status-publish.hentry
+    .entry-content
+      .woocommerce
+        .woocommerce-notices-wrapper
+        - if @favorite_jobs.present?
+          table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents[cellspacing="0"]
+            thead
+              tr
+                th.product-remove
+                  | No.
+                th.product-thumbnail
+                  |  
+                th.product-name
+                  | Title
+                th.product-price
+                  | City
+                th.product-quantity
+                  | Salary
+                th.product-quantity
+                  | Remove
+            tbody
+              - @favorite_jobs.each_with_index do |favorite, index|
+                tr.woocommerce-cart-form__cart-item.cart_item
+                  td
+                    = index + 1
+                  td[style="text-align: center;"]
+                    input type="checkbox" class="checkbox-apply-job" data-id="#{favorite.job_id}"
+                  td
+                    = link_to favorite.job.title, favorite.job
+                  td
+                    - favorite.job.cities.each_with_index do |city, index|
+                      = city.title
+                      = ", " if index != favorite.job.cities.size - 1
+                  td.product-price
+                    = favorite.job.salary
+                  td.product-quantity
+                    a href="javascript:void(0)" class="remove-favorite-job" data-favorite_id="#{favorite.id} ×
+              tr
+                td.actions[colspan="6"]
+                  a.button.apply-all-job[href="javascript:void(0)"]
+                    | Apply all
+        - else
+          |  Favorite jobs empty 

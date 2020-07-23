@@ -1,0 +1,20 @@
+// Place all the styles related to the Job controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+#primary{
+  .container{
+    .entry-content{
+      .job_listings{
+        .job_filters{
+          .search_jobs{
+            .search_categories{
+              select{
+                padding: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

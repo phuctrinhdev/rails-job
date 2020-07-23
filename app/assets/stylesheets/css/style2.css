@@ -1,0 +1,404 @@
+/*
+Theme Name: Jobify - Child
+Theme URI: https://astoundify.com/
+Author: Astoundify
+Author URI: http://astoundify.com
+Description: A beautiful job board site completely integrated with Mike Jolley's WP Job Manager plugin. Use 10+ custom widgets including an interactive map, multiple sliders, testimonials, and more to create a unique homepage in seconds.
+Version: 1.0.2
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: white, one-column, right-sidebar, fixed-width, custom-background, custom-header, theme-options, full-width-template, featured-images, flexible-header, custom-menu, translation-ready
+Template: jobify
+*/
+
+/**
+ * The parent theme's CSS is automatically included so there is no need
+ * to use the @import rule to include the parent theme CSS.
+
+/**
+ * Place Custom CSS Below this.
+ */
+
+body, input, textarea, select, body .chosen-container-single .chosen-single span, body .chosen-container-single .chosen-single div:before {
+  color: #797979;
+}
+
+a, .job_listing-clickbox:hover {
+  color: #6d6d6d;
+}
+
+a:active, a:hover {
+  color: #545454;
+}
+
+.site-header, .nav-menu--primary .sub-menu {
+  background: #000;
+}
+
+.site-title {
+  color: blank;
+}
+
+.nav-menu--primary ul li.highlight>a, .nav-menu--primary ul li.login>a {
+  border-color: #666666;
+}
+
+.nav-menu--primary ul li.highlight>a:hover, .nav-menu--primary ul li.login>a:hover {
+  color: #ffffff;
+  background-color: #666666;
+  border-color: #666666;
+}
+
+.search_jobs, .search_resumes, .cluster div, .job-type, .price-option__title, .entry-header__featured-image:hover .overlay, .widget_price_filter .ui-slider-horizontal .ui-slider-range {
+  background-color: #7dc246;
+}
+
+.job_filters .search_jobs .filter_by_tag a.active {
+  color: #7dc246;
+}
+
+.cluster div:after, input:focus, .widget_price_filter .ui-slider .ui-slider-handle, .select2-container--default.select2-container--focus .select2-selection--multiple {
+  border-color: #7dc246;
+}
+
+ul.job_listings .job_listing:hover, .job_position_featured, li.type-resume:hover {
+  box-shadow: inset 5px 0 0 #7dc246;
+}
+
+.button, input[type=button], button, #submitcomment, #commentform input[type=submit], .widget--footer input[type=submit], .mfp-close-btn-in .mfp-close, input[name=wp_job_manager_send_application], input[name=wp_job_manager_edit_application], input[name=submit_bookmark], .add-favorite, .update-favorite, #rcp_submit, input[name=wp_job_manager_resumes_apply_with_resume], input[name=wp_job_manager_resumes_apply_with_resume_create], .wpcf7-submit, input[type=submit].ninja-forms-field, input[name=submit-job-alert], .hero-search .search_jobs>div input[type=submit], .hero-search .search_resumes>div input[type=submit] {
+  background-color: #7dc246;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button:hover, input[type=button]:hover, button:hover, .job-manager-pagination a:hover, .job-manager-pagination span:hover, .page-numbers:hover, #searchform button:hover, #searchform input[type=submit]:hover, #submitcomment:hover, #commentform input[type=submit]:hover, .page-numbers.current, .widget--footer input[type=submit]:hover, .mfp-close-btn-in .mfp-close:hover, input[name=wp_job_manager_send_application]:hover, input[name=wp_job_manager_edit_application]:hover, input[name=submit_bookmark]:hover, .add-favorite:hover, .update-favorite:hover, #rcp_submit:hover, input[name=wp_job_manager_resumes_apply_with_resume]:hover, input[name=wp_job_manager_resumes_apply_with_resume_create]:hover, .wpcf7-submit:hover, input[type=submit].ninja-forms-field:hover, input[name=submit-job-alert]:hover, .tp-caption .button:hover {
+  background-color: transparent;
+  color: #7dc246;
+  border-color: #7dc246;
+}
+
+.button--type-inverted, .widget--home-video .button, .load_more_jobs strong, .load_more_resumes strong, .job-manager-form.wp-job-manager-bookmarks-form a.bookmark-notice, .job-manager-form.wp-job-manager-favorites-form a.favorite-notice {
+  color: #7dc246;
+  border-color: #7dc246;
+}
+
+.button--type-inverted:hover, .widget--home-video .button:hover, .load_more_jobs strong:hover, .load_more_resumes strong:hover, .job-manager-form.wp-job-manager-bookmarks-form a.bookmark-notice:hover, .job-manager-form.wp-job-manager-favorites-form a.favorite-notice:hover {
+  background-color: #7dc246;
+  color: #fff;
+}
+
+.button--type-action, .button--type-secondary:hover, .single-product #content .single_add_to_cart_button, .checkout-button, #place_order, input[type=button].application_button, .application_button_link, input[type=button].resume_contact_button {
+  color: #7dc246;
+  background-color: transparent;
+  border-color: #7dc246;
+}
+input[type=button].application_button:disabled{
+  cursor: not-allowed;
+}
+
+.button--type-action:hover, .button--type-secondary, .single-product #content .single_add_to_cart_button:hover, .checkout-button:hover, #place_order:hover, input[type=button].application_button:hover, .application_button_link:hover, input[type=button].resume_contact_button:hover {
+  background-color: #7dc246;
+  color: #ffffff;
+  border-color: #7dc246;
+}
+
+.button--color-white, .button--color-white.button--type-inverted:hover, .button--type-hover-white:hover {
+  color: #797979;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.button--color-white:hover, .button--color-white.button--type-inverted, .button--type-hover-inverted-white:hover {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+body {
+  padding-top: 110px;
+  font-family: "Varela Round", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+.footer-cta, .footer-cta a, .footer-cta tel {
+  color: #ffffff;
+}
+
+.footer-cta a.button:hover {
+  color: #7dc246 !important;
+}
+
+.footer-cta {
+  background-color: #7dc246;
+}
+
+.widget-title--footer {
+  color: #d1d1d1;
+}
+
+.widget--footer a {
+  color: #d1d1d1;
+}
+
+.widget--footer {
+  color: #d1d1d1;
+}
+
+.footer-widgets {
+  background-color: #666666;
+}
+
+.copyright a {
+  color: #b2b2b2;
+}
+
+.copyright {
+  color: #b2b2b2;
+}
+
+.site-footer {
+  background-color: #666666;
+}
+
+.button, input[type=button], button, #submitcomment, #commentform input[type=submit], .widget--footer input[type=submit], input[name=wp_job_manager_send_application], input[name=wp_job_manager_edit_application], input[name=submit_bookmark], #rcp_submit, input[name=wp_job_manager_resumes_apply_with_resume], input[name=wp_job_manager_resumes_apply_with_resume_create], .wpcf7-submit, input[type=submit].ninja-forms-field, input[name=submit-job-alert], .hero-search .search_jobs>div input[type=submit], .hero-search .search_resumes>div input[type=submit] {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  line-height: 1.3;
+  font-size: 14px;
+}
+
+.entry-title {
+  font-family: "Varela Round", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+.widget-description.widget-description--home, .callout-feature-content p, .hero-search__content p {
+  font-family: "Varela Round", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+.widget-title.widget-title--home, .callout-feature-title, .hero-search__title {
+  font-family: "Varela Round", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+.entry-content .rcp_form input[type=email], .entry-content .rcp_form input[type=password], .entry-content .rcp_form input[type=text], .jobify-input, input[type=email], input[type=number], input[type=password], input[type=search], input[type=date], input[type=tel], input[type=text], select, textarea, body .chosen-container-single .chosen-single span, body .chosen-container .chosen-results li.active-result {
+  font-family: "Varela Round", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1;
+  font-size: 16px;
+}
+
+.widget-title {
+  font-family: "Varela Round", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+.logged-in .modal .post-99991207 .entry-content {
+  padding: 30px;
+}
+
+.woocommerce ul.products li.product .onsale, .woocommerce-page ul.products li.product .onsale {
+  background-color: #7dc246;
+}
+
+.woocommerce .price ins, .woocommerce ul.product_list_widget ins {
+  background-color: #7dc246;
+}
+
+.single-product #content .woocommerce-tabs .tabs li.active a, .woocommerce-MyAccount-navigation-link.is-active a {
+  color: #7dc246;
+  border-bottom: 2px solid #7dc246;
+}
+
+@media screen and (min-width: 1200px) {
+  .nav-menu--primary ul li a, .nav-menu--primary li a, .nav-menu--primary ul li a:hover, .nav-menu--primary li a:hover, .primary-menu-toggle, .searchform--header__submit, .searchform--header__input {
+    color: #fff;
+  }
+  body {
+    font-size: 16px;
+  }
+  .entry-title {
+    font-size: 38px;
+  }
+  .widget-description.widget-description--home {
+    font-size: 16px;
+  }
+  .widget-title.widget-title--home {
+    font-size: 36px;
+  }
+  .page-header {
+    font-family: "Varela Round", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 1.3;
+  }
+  .widget-title {
+    font-size: 22px;
+  }
+}
+
+#jobify_widget_feature_callout-3 .feature-callout-cover {
+  background-image: url(/assets/images/hero-image-text-right-darker.jpg);
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+#jobify_widget_feature_callout-3 .feature-callout {
+  background-color: #ffffff;
+}
+
+#jobify_widget_feature_callout-3 .callout-feature-content, #jobify_widget_feature_callout-3 .callout-feature-content p, #jobify_widget_feature_callout-3 .callout-feature-content a:not(.button), #jobify_widget_feature_callout-3 .callout-feature-title {
+  color: #ffffff
+}
+
+#jobify_widget_feature_callout-4 .feature-callout-cover {
+  background-image: url(/assets/images/hero-image-text-left-darker.jpg);
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+#jobify_widget_feature_callout-4 .feature-callout {
+  background-color: #ffffff;
+}
+
+#jobify_widget_feature_callout-4 .callout-feature-content, #jobify_widget_feature_callout-4 .callout-feature-content p, #jobify_widget_feature_callout-4 .callout-feature-content a:not(.button), #jobify_widget_feature_callout-4 .callout-feature-title {
+  color: #ffffff
+}
+
+#jobify_widget_testimonials-1 {
+  background-color: #ffffff;
+}
+
+#jobify_widget_testimonials-1 {
+  background-image: url(/assets/images/hero-testimonals-green.jpg);
+  background-size: cover;
+  background-repeat: none;
+}
+
+.hero-search {
+  background-image: url(/assets/images/landing_hero_optimized.jpg);
+  background-position: center center;
+}
+
+.recentcomments a {
+  display: inline !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.job-type.term-5, .job-type.freelance {
+  background-color: #ff5a5f;
+}
+
+.job-type.term-2, .job-type.full-time {
+  background-color: #5bbc2e;
+}
+
+.job-type.term-6, .job-type.internship {
+  background-color: #00b2a9;
+}
+
+.job-type.term-3, .job-type.part-time {
+  background-color: #735fee;
+}
+
+.recentcomments a {
+  display: inline !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.job-type.term-5, .job-type.freelance {
+  background-color: #ff5a5f;
+}
+
+.job-type.term-2, .job-type.full-time {
+  background-color: #5bbc2e;
+}
+
+.job-type.term-6, .job-type.internship {
+  background-color: #00b2a9;
+}
+
+.job-type.term-3, .job-type.part-time {
+  background-color: #735fee;
+}
+
+.back2top {
+  width: 40px;
+  height: 40px;
+  background-color: #666;
+  color: #fff;
+  text-align: center;
+  line-height: 36px;
+  position: fixed;
+  right: 30px;
+  bottom: 15%;
+  font-size: 18px;
+  z-index: 500;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: .2s;
+  -moz-transition: .2s;
+  -webkit-transition: .2s;
+  -o-transition: .2s;
+}
+
+.back2top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+nav.pagination span a, nav.pagination span.current{
+  text-decoration: none;
+  font: 400 13px/normal Montserrat, sans-serif;
+  text-align: center;
+  padding: 8px 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 20px 5px;
+  display: inline-block;
+}
+nav.pagination span.current{
+  color: #7dc246;
+}
+.wp-job-manager-categories-enabled .search_jobs div.search_keywords{
+  width: 73%;
+}
+.export-csv{
+  float: right;
+}
+@media screen and (min-width: 1200px) {
+  .job_listing-about, .resume-about {
+    width: 90%;
+  }
+}
+
+@media(min-width: 768px) {
+  #jobify_widget_feature_callout-3 .feature-callout-cover--overlay-gradient-right:after {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6) 100%);
+  }
+  #jobify_widget_feature_callout-4 .feature-callout-cover--overlay-gradient-left:after {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6) 100%);
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .hero-search__title {
+    font-size: 45px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .hero-search {
+    padding-top: 14em;
+    padding-bottom: 14em;
+  }
+}

@@ -1,0 +1,16 @@
+// Place all the styles related to the City controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+#primary{
+  article{
+    .entry-content{
+      .companies-overview{
+        .company-group{
+          a{
+            border-bottom: 1px solid #eee;
+          }
+        }
+      }
+    }
+  }
+}

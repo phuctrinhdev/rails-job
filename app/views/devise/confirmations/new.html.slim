@@ -1,0 +1,19 @@
+- set_meta_tags title: "VenJob - Resend confirmation instructions",
+                description: "VenJob - Resend confirmation instructions",
+                keywords: "VenJob - Resend confirmation instructions"
+header.page-header
+  h2.page-title
+    | Resend confirmation instructions
+#primary.content-area.container[role="main"]
+  article#post-1673.post-1673.page.type-page.status-publish.hentry
+    .entry-content
+      .registration-form.woocommerce
+        = form_for(resource, as: resource_name, url: user_confirmation_path(resource_name), html: { method: :post }) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          p.field
+            = f.label :email
+            br
+            = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+          p.actions
+            = f.submit "Resend confirmation instructions"
+        = render "devise/shared/links"

@@ -1,0 +1,13 @@
+tr.woocommerce-cart-form__cart-item.cart_item
+  td
+    = history_item_counter + 1
+  td[style="text-align: center;"]
+    input type="checkbox" class="checkbox-apply-job" data-id="#{history_item.id}" 
+  td
+    = link_to history_item.title, history_item
+  td
+    - history_item.cities.each_with_index do |city, index|
+      = city.title
+      = ", " if index != history_item.cities.size - 1
+  td.product-price
+    = history_item.salary

@@ -1,0 +1,4 @@
+li.job-stat.col-md-3.col-sm-6.col-xs-12
+  strong
+    = latest_industry.jobs_count
+  = link_to latest_industry.title, jobs_with_industry_path(industry_id: latest_industry.id)

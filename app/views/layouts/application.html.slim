@@ -1,0 +1,140 @@
+doctype html
+html
+  head
+    = display_meta_tags
+    = csrf_meta_tags
+    = csp_meta_tag
+    link[rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico"]
+    link[rel="stylesheet" href="//fonts.googleapis.com/css?family=Varela+Round%3Aregular%7CMontserrat%3Aregular%2C700&#038;subset=latin,hebrew" type="text/css" media="all"]
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', media: 'all'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body.home.page-template.page-template-page-templates.page-template-jobify.page-template-page-templatesjobify-php.page.page-id-25.woocommerce-no-js.single-listing-style-side.single-resume-style-side.wp-job-manager-categories-enabled.wp-job-manager.wp-job-manager-bookmarks.ninjaforms-contact-job-form.wp-job-manager-contact-listing.woocommerce.testimonials.ninja-forms.jetpack.custom-font.nav-menu-break-large.fixed-header.jobify-child
+    #page.hfeed.site
+      header#masthead.site-header[role="banner"]
+        .container
+          .site-header__wrap
+            a.site-branding[href="/" title="VenJob" rel="home"]
+              h1.site-title
+                img[src="/assets/images/logo.png" width="" height="" alt=""]
+            nav#site-navigation.site-primary-navigation
+              a.js-primary-menu-toggle.primary-menu-toggle.primary-menu-toggle--close[href="#site-navigation"]
+                | Close
+              form#searchform.searchform.searchform--header[role="search" method="get" action="https://jobify-demos.astoundify.com/classic/"]
+                label.screen-reader-text[for="s"]
+                  | Search for:
+                input#s.searchform__input.searchform--header__input[type="text" value="" name="s" placeholder="Keywords..."]
+                button#searchsubmit.searchform__submit.searchform--header__submit[type="submit"]
+                  span.screen-reader-text
+                    | Search
+              .nav-menu.nav-menu--primary
+                ul#menu-main-menu.nav-menu.nav-menu--primary
+                  - if !current_admin
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991208
+                      a[href="/jobs"]
+                        | Find A Job
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991220
+                      a[href="/cities"]
+                        | City
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991220
+                      a[href="/industries"]
+                        | Industry
+                    li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991220
+                      a[href="/history"]
+                        | History
+                    - if current_user
+                      li.register.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991219
+                        = link_to 'Favorite', users_favorite_jobs_path
+                      li.register.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991219
+                        = link_to 'Hi, ' + current_user.full_name, users_info_path
+                      li.login.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991213
+                        = link_to 'Sign out', destroy_user_session_path, method: :delete
+                    - else
+                      li.register.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991219
+                        = link_to 'Sign up', new_user_registration_path
+                      li.login.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991213
+                        = link_to 'Sign in', new_user_session_path
+                  - else
+                    - if current_admin
+                      li.register.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991219
+                        = link_to 'Applies', admins_applies_path
+                      li.login.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-99991213
+                        = link_to 'Admin sign out', destroy_admin_session_path, method: :delete
+          a.js-primary-menu-toggle.primary-menu-toggle.primary-menu-toggle--open[href="#site-navigation"]
+            span.screen-reader-text
+              | Menu
+      #main.site-main
+        - render 'layouts/alerts'
+        = yield
+      .footer-cta
+        .container
+          h2
+            | Got a question?
+          p
+            | We're here to help. Check out our FAQs, send us an email or call us at 1 (800) 555-5555
+      footer#colophon.site-footer[role="contentinfo"]
+        .footer-widgets
+          .container
+            .row
+              .col-xs-12.col-md-6.col-lg-3
+                aside#text-1.widget.widget--footer.widget_text
+                  .textwidget
+                    img[src="/assets/images/logo.png"]
+                    br
+                    br
+                    |  Job Searching Just Got Easy. Use Jobify to run a hiring site and earn money in the process! 
+              .col-xs-12.col-md-6.col-lg-3
+                aside#pages-1.widget.widget--footer.widget_pages
+                  h3.widget-title.widget-title--footer
+                    | Site Map
+                  ul
+                    li.page_item.page-item-703
+                      a[href="https://jobify-demos.astoundify.com/classic/blog/"]
+                        | Blog
+              .col-xs-12.col-md-6.col-lg-3
+                aside#recent-posts-3.widget.widget--footer.widget_recent_entries
+                  h3.widget-title.widget-title--footer
+                    | Recent News Articles
+                  ul
+                    li
+                      a[href="https://jobify-demos.astoundify.com/classic/2016/03/29/middle-class-jobs-are-being-replaced-by-burger-flipping-retail-sales-low-pay-jobs-4/"]
+                        | The Best (and Worst) Canadian Merchant Account Providers
+                      span.post-date
+                        | March 29, 2016
+              .col-xs-12.col-md-6.col-lg-3
+                aside#text-2.widget.widget--footer.widget_text
+                  h3.widget-title.widget-title--footer
+                    | Jobify Offices
+                  .textwidget
+                    | Jobify Inc. 555 Madison Avenue, Suite F-2 Manhattan, New York 10282 
+                    br
+                    |  Jobify Inc Canada. 545 Younge St, Suite 11 Toronto, Ontario M4K 6F4 
+        .copyright
+          .container
+            .site-info
+              |  © 2020 VenJob — All Rights Reserved 
+            .footer-social
+              a[href="http://facebook.com"]
+                span.screen-reader-text
+                  | Facebook
+              a[href="http://twitter.com"]
+                span.screen-reader-text
+                  | Twitter
+              a[href="https://plus.google.com/"]
+                span.screen-reader-text
+                  | Google Plus
+              a[href="http://instagram.com/"]
+                span.screen-reader-text
+                  | Instagram
+              a[href="https://pinterest.com/"]
+                span.screen-reader-text
+                  | Pinterest
+              a[href="https://vimeo.com"]
+                span.screen-reader-text
+                  | Vimeo
+              a[href="http://www.linkedin.com"]
+                span.screen-reader-text
+                  | Linkedin
+        .back2top
+          .b-icon
+            | ↑

@@ -1,0 +1,21 @@
+li.job_listing.job-type-part-time.post-3354.type-job_listing.status-publish.has-post-thumbnail.hentry.job_listing_category-design.job_listing_type-part-time
+  .job_listing-logo
+    = link_to(job_item) do
+      img class="company_logo" src="#{job_item.company.logo != "" ? job_item.company.logo : "https://via.placeholder.com/66x38?text=Logo"}" alt="#{job_item.company.title}" 
+  .job_listing-about
+    .job_listing-position.job_listing__column
+      h3.job_listing-title
+        = link_to job_item.title, job_item
+      .job_listing-company
+        strong
+          = link_to job_item.company.title, jobs_with_company_path(company_id: job_item.company.id)
+    .job_listing-location.job_listing__column
+      - job_item.cities.each_with_index do |city, index|
+        = link_to jobs_with_city_path(city_id: city.id), class: "google_map_link" do
+          = city.title
+          = ", " if index != job_item.cities.size - 1
+    ul.job_listing-meta.job_listing__column
+      li.job_listing-type.job-type.part-time
+        = job_item.salary
+      li.job_listing-date
+        = job_item.expiration_date

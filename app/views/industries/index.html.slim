@@ -1,0 +1,17 @@
+- set_meta_tags title: "VenJob - Industries",
+                description: "VenJob - Industries",
+                keywords: "VenJob - Industries"
+header.page-header
+  h2.page-title
+    | Industries
+#primary.content-area.container[role="main"]
+  article#post-2064.post-2064.page.type-page.status-publish.hentry
+    .entry-content
+      ul.companies-overview
+        - @industries.each do |industry|
+          li.company-group
+            = link_to jobs_with_industry_path(industry_id: industry.id) do
+              = industry.title
+              |  (
+              = industry.jobs.count
+              | ) 

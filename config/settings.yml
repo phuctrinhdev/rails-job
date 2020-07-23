@@ -1,0 +1,9 @@
+defaults: &defaults
+  home:
+    limit: 10
+  admin:
+    limit: 5
+  search:
+    limit: 25
+development:
+  <<: *defaults

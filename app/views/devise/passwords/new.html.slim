@@ -1,0 +1,20 @@
+- set_meta_tags title: "VenJob - Forgot your password",
+                description: "VenJob - Forgot your password",
+                keywords: "VenJob - Forgot your password"
+header.page-header
+  h2.page-title
+    | Forgot your password
+#primary.content-area.container[role="main"]
+  article#post-1673.post-1673.page.type-page.status-publish.hentry
+    .entry-content
+      .registration-form.woocommerce
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          p.field
+            = f.label :email
+            br
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"
+          p.actions
+            = f.submit "Send me reset password instructions", class: "button"
+        p
+          = render "devise/shared/links"

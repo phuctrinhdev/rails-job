@@ -1,0 +1,46 @@
+- set_meta_tags title: "VenJob - Applied Jobs",
+                description: "VenJob - Applied Jobs",
+                keywords: "VenJob - Applied Jobs"
+header.page-header
+  h2.page-title
+    | Applied Jobs
+#primary.content-area.container[role="main"]
+  article#post-1673.post-1673.page.type-page.status-publish.hentry
+    .entry-content
+      .woocommerce
+        .woocommerce-notices-wrapper
+        - if @applied_jobs.present?
+          table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents[cellspacing="0"]
+            thead
+              tr
+                th.product-remove
+                  | No.
+                th.product-thumbnail
+                  |  
+                th.product-name
+                  | Title
+                th.product-price
+                  | City
+                th.product-quantity
+                  | Salary
+                th.product-quantity
+                  | Applied at
+            tbody
+              - @applied_jobs.each_with_index do |apply, index|
+                tr.woocommerce-cart-form__cart-item.cart_item
+                  td
+                    = index + 1
+                  td
+
+                  td
+                    = apply.job.title
+                  td
+                    - apply.job.cities.each_with_index do |city, index|
+                      = city.title
+                      = ", " if index != apply.job.cities.size - 1
+                  td.product-price
+                    = apply.job.salary
+                  td.product-quantity
+                    = apply.created_at.strftime("%F %T")
+        - else
+          |  Applied jobs empty 

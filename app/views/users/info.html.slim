@@ -1,0 +1,29 @@
+- set_meta_tags title: "VenJob - User information",
+                description: "VenJob - User information",
+                keywords: "VenJob - User information"
+header.page-header
+  h2.page-title
+    | User information
+#primary.content-area.container[role="main"]
+  article#post-1673.post-1673.page.type-page.status-publish.hentry
+    .entry-content
+      form#submit-job-form.job-manager-form
+        fieldset
+          label[for="full_name"]
+            | Fullname
+          .field.required-field.draft-required
+            input type="text" class="input-text" name="full_name" id="full_name" value="#{current_user.full_name}" disabled="disabled" 
+        fieldset
+          label[for="email"]
+            | Email
+          .field.required-field.draft-required
+            input type="email" class="input-text" name="email" id="email" value="#{current_user.email}" disabled="disabled"
+        fieldset
+          label[for="cv"]
+            | CV
+          .field.required-field.draft-required
+            a href="#{current_user.cv}" target="_blank"
+              = current_user.cv
+        p
+          = link_to "Update", edit_user_registration_path, class: "button"
+          = link_to "My jobs", users_applied_jobs_path, class: "button"

@@ -1,0 +1,46 @@
+- set_meta_tags title: "VenJob - Search",
+                description: "VenJob - Search",
+                keywords: "VenJob - Search"
+#primary[role="main"]
+  .container.content-area
+    .entry-content
+      .job_listings
+        = form_tag(search_jobs_path, :method => "get") do
+          .search_jobs
+            .search_keywords
+              label[for="keyword"]
+                | Keywords
+              input type="search" name="keyword" id="keyword" placeholder="Keywords" value="#{params[:keyword]}"
+            .search_submit
+              = submit_tag "Search Jobs", name: nil
+          .showing_jobs
+            span
+              | Search completed. Found 
+              = @amount_job
+              |  matching records.
+        - if @jobs.present?
+          ul.job_listings
+            - @jobs.each do |job|
+              li.job_listing.job-type-part-time.post-3354.type-job_listing.status-publish.has-post-thumbnail.hentry.job_listing_category-design.job_listing_type-part-time
+                .job_listing-logo
+                  = link_to job_path(id: job["job_id"]) do
+                    img class="company_logo" src="#{job["company_logo"] != "" ? job["company_logo"] : "https://via.placeholder.com/66x38?text=Logo"}" alt="#{job["company_name"]}" 
+                .job_listing-about
+                  .job_listing-position.job_listing__column
+                    h3.job_listing-title
+                      = link_to job["job_title"], job_path(id: job["job_id"])
+                    .job_listing-company
+                      strong
+                        = link_to job["company_name"], jobs_with_company_path(company_id: job["company_id"])
+                  .job_listing-location.job_listing__column
+                    - job["city_ids"].each_with_index do |city_id, index|
+                      = link_to jobs_with_city_path(city_id: city_id), class: "google_map_link" do
+                        = job["city_names"][index]
+                        = ", " if index != job["city_ids"].size - 1
+                  ul.job_listing-meta.job_listing__column
+                    li.job_listing-type.job-type.part-time
+                      = job["salary"] == 0 ? "Thuương lượng" : job["salary"]
+                    li.job_listing-date
+                      = job["expiration_date"] > 0 ? Time.at(job["expiration_date"]).to_date.to_s : ""
+          .job-manager-pagination
+            = will_paginate @jobs

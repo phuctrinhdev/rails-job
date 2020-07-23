@@ -1,0 +1,82 @@
+- set_meta_tags title: "VenJob - Homepage",
+                description: "VenJob - Homepage",
+                keywords: "VenJob - Homepage"
+#primary[role="main"]
+  section#jobify_widget_search_hero-2.widget.widget--home.widget--home--no-margin.widget--home-hero-search
+    .hero-search.hero-search--no-overlay.hero-search--height-medium
+      .container
+        .hero-search__content[style="color:#666666"]
+          h2.hero-search__title[style="color:#666666"]
+            | The Easiest Way to Get Your New Job
+          p
+            | Find jobs, create trackable resumes and enrich your applications.
+        = form_tag(search_jobs_path, :method => "get", :class => "job_search_form job_search_form--flat") do
+          .search_jobs
+            .search_keywords
+              label[for="keyword"]
+                | Keywords
+              input#keyword[type="text" name="keyword" placeholder="Keywords"]
+            .search_submit
+              = submit_tag "Search Jobs", name: nil
+  section#jobify_widget_jobs-1.widget.widget--home.jobify_widget_jobs
+    .container
+      .row
+        .recent-jobs.col-xs-12
+          h3.widget-title.widget-title--home
+            | Total Jobs: 
+            = @amount_job
+          .job_listings
+            ul.job_listings
+              - if @latest_jobs.present?
+                = render partial: '/shared/job_item', collection: @latest_jobs
+            = link_to jobs_path, class: "load_more_jobs" do
+              strong
+                | Load more listings
+  section#jobify_widget_feature_callout-4.widget.widget--home.widget--home--no-margin.jobify_widget_feature_callout.widget--home-feature-callout
+    .feature-callout.text-left.image-cover
+      .feature-callout-cover.feature-callout-cover--overlay-gradient-left
+        .container
+          .row
+            .col-xs-12.col-sm-8.col-md-6
+              .callout-feature-content.callout-feature-content--height-medium
+                h2.callout-feature-title
+                  | Join Thousands of Companies That Rely on Jobify
+                p
+                  | Jobify offers a way to completely optimize your entire recruiting process. Find better candidates, conduct more focused interviews, and make data-driven hiring decisions.
+                p
+                  a.button.button--color-white.button--size-medium[href="https://jobify-demos.astoundify.com/classic/pricing/"]
+                    | Get Started
+  section#jobify_widget_stats-1.widget.widget--home.jobify_widget_stats.widget--home-stats
+    .container
+      h3.widget-title.widget-title--home
+        | Top cities
+      p.widget-description.widget-description--home
+        |  Here we list our cities and how many people we’ve helped find a job and companies have found recruits. It's a pretty awesome stats area! 
+      ul.job-stats.row.showing-4
+        = render partial: '/shared/latest_industry', collection: @latest_cities
+      = link_to cities_path, class: "load_more_jobs" do
+        strong
+          | Load more listings
+  section#jobify_widget_feature_callout-3.widget.widget--home.widget--home--no-margin.jobify_widget_feature_callout.widget--home-feature-callout
+    .feature-callout.text-right.image-cover
+      .feature-callout-cover.feature-callout-cover--overlay-gradient-right
+        .container
+          .row
+            .col-xs-12.col-sm-8.col-md-6.col-sm-offset-4.col-md-offset-6
+              .callout-feature-content.callout-feature-content--height-medium
+                h2.callout-feature-title
+                  | Make Recruiting Your Competitive Advantage
+                p
+                  | Talent is a top priority for all startup founders and executives. Jobify offers a way to completely optimize your entire recruiting process. Find better candidates, conduct more focused interviews, and make data-driven hiring decisions.
+                p
+                  a.button.button--color-white.button--size-medium[href="https://jobify-demos.astoundify.com/classic/pricing/"]
+                    | Get Started
+  section#jobify_widget_stats-1.widget.widget--home.jobify_widget_stats.widget--home-stats
+    .container
+      h3.widget-title.widget-title--home
+        | Top Industries
+      ul.job-stats.row.showing-4
+        = render partial: '/shared/latest_industry', collection: @latest_industries
+      = link_to industries_path, class: "load_more_jobs" do
+        strong
+          | Load more listings

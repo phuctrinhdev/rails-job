@@ -1,0 +1,84 @@
+- set_meta_tags title: @job.title,
+                description: @job.title,
+                keywords: @job.title
+.single_job_listing
+  - if @job.present?
+    .page-header
+      h1.page-title
+        = @job.title
+      h3.page-subtitle
+        ul.job-listing-meta.meta
+          li.job-type.part-time
+            = "Salary: " + @job.salary
+          li.location
+            - @job.cities.each_with_index do |city, index|
+              = link_to jobs_with_city_path(city_id: city.id), class: "google_map_link" do
+                = city.title
+                = "," if index != @job.cities.count - 1
+          li.date-posted
+            = @job.expiration_date
+          li.job-company
+            = link_to @job.company.title, jobs_with_city_path(city_id: @job.company_id)
+    #content.container.content-area[role="main"]
+      .job-overview-content.row
+        .job_listing-description.job-overview.col-md-9.col-sm-12
+          h4
+            | Benefit
+          = raw(@job.benefit)
+          h4
+            | Job requirements
+          = raw(@job.job_requirements)
+          h4
+            | Job description
+          = raw(@job.job_description)
+          h4
+            | Other information
+          = raw(@job.other_information)
+        .job-meta.col-md-3.col-sm-6.col-xs-12
+          aside.widget.widget--job_listing
+            img class="company_logo" src="#{@job.company.logo != "" ? @job.company.logo : "https://via.placeholder.com/66x38?text=Logo"}" alt="#{@job.company.title}"
+          aside.widget.widget--job_listing
+            .job_application.application[style="margin-bottom: 15px;"]
+              - if @apply.blank?
+                input type="button" class="application_button button apply-or-favorite-jobs" value="Apply for job" data-id="#{@job.id}" data-type="apply" 
+              - else
+                input.application_button.button[type="button" value="Apply for job" disabled]
+            .job_application.application
+              - if @favorite.blank?
+                input type="button" class="application_button button apply-or-favorite-jobs" value="Favorite" data-id="#{@job.id}" data-type="favorite"
+              - else
+                input.application_button.button[type="button" value="Favorite" disabled]
+          aside.widget.widget--job_listing
+            h3.widget-title.widget-title--job_listing
+              | Company Information
+            ul
+              li
+                | Name: 
+                = @job.company.title
+              li
+                | Address: 
+                = @job.company.address
+              = raw(@job.company.description)
+          aside.widget.widget--job_listing
+            h3.widget-title.widget-title--job_listing
+              | Industry
+            .job_listing-categories
+              - @job.industries.each_with_index do |industry, index|
+                = link_to industry.title, jobs_with_industry_path(industry_id: industry.id), class: "job-category"
+    .related-jobs.container
+      h3.widget-title.widget--title-job_listing-top
+        | Related Jobs
+      ul.job_listings.related
+        - if @relate_jobs.present?
+          = render partial: '/shared/job_item', collection: @relate_jobs
+  - else
+    .page-header
+      h1.page-title
+        |  Job was not found 
+      h3.page-subtitle
+
+      ul.job-listing-meta.meta
+        li.job-company
+          = link_to "Back to home", root_path
+        li.location
+          = link_to "Find a job", jobs_path

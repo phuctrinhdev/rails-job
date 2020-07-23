@@ -1,0 +1,17 @@
+- set_meta_tags title: "VenJob - Cities",
+                description: "VenJob - Cities",
+                keywords: "VenJob - Cities"
+header.page-header
+  h2.page-title
+    | Cities
+#primary.content-area.container[role="main"]
+  article#post-2064.post-2064.page.type-page.status-publish.hentry
+    .entry-content
+      ul.companies-overview
+        - @cities.each do |city|
+          li.company-group
+            = link_to jobs_with_city_path(city_id: city.id) do
+              = city.title
+              |  (
+              = city.jobs.count
+              | ) 

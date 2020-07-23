@@ -1,0 +1,33 @@
+- set_meta_tags title: "VenJob - History",
+                description: "VenJob - History",
+                keywords: "VenJob - History"
+header.page-header
+  h2.page-title
+    | History
+#primary.content-area.container[role="main"]
+  article#post-2452.post-2452.page.type-page.status-publish.hentry
+    .entry-content
+      .woocommerce
+        .woocommerce-notices-wrapper
+        - if @jobs_history.present?
+          table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents[cellspacing="0"]
+            thead
+              tr
+                th.product-remove
+                  | No.
+                th.product-thumbnail
+                  |  
+                th.product-name
+                  | Title
+                th.product-price
+                  | City
+                th.product-quantity
+                  | Salary
+            tbody
+              = render partial: (user_signed_in? ? '/shared/history_item_has_user' : '/shared/history_item_has_not_user'), collection: @jobs_history, as: :history_item
+              tr
+                td.actions[colspan="6"]
+                  a.button.apply-all-job[href="javascript:void(0)"]
+                    | Apply all
+        - else
+          |  History jobs empty 

@@ -1,0 +1,27 @@
+- set_meta_tags title: "VenJob - Jobs",
+                description: "VenJob - Jobs",
+                keywords: "VenJob - Jobs"
+#primary[role="main"]
+  .container.content-area
+    .entry-content
+      .job_listings
+        form.job_filters
+          .search_jobs
+            .search_keywords
+              label[for="search_keywords"]
+                | Keywords
+              input#search_keywords[type="text" name="search_keywords" placeholder="Keywords" value=""]
+            .search_submit
+              input[type="submit" name="submit" value="Search"]
+          .showing_jobs
+            span
+              | Search completed. Found 
+              = @amount_job
+              |  matching records.
+        noscript
+          | Your browser does not support JavaScript, or it is disabled. JavaScript must be enabled in order to view listings.
+        - if @jobs.present?
+          ul.job_listings
+            = render partial: '/shared/job_item', collection: @jobs
+          .job-manager-pagination
+            = paginate @jobs
